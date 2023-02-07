@@ -6,60 +6,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/style.css">
     <script src="./script/script.js" defer></script>
-    <title>Document</title>
+    <title>Books</title>
 </head>
 <body>
-    <div id="Main-grid-container">
-        <div id="Header">
+    <div id="main-grid-container">
+        <div id="header">
             <div>
-                <img src="./assets/logo/HatchfulExport-All/logo.png" alt="Logo" id="logo">
+                <p id="logo" class="montserrat">BOOKS</p>
             </div>
 
-            <div>
+            <div id="book-and-audio">
                 <div>
-                    <img src="./assets/icons/bookshelf.svg" alt="book icon">
-                    <div>Books</div>
+                    <button>
+                        <img src="./assets/icons/bookshelf.svg" alt="book icon" class="icon">
+                        <p class="montserrat">Books</p>
+                    </button>
                 </div>
 
                 <div>
-                    <img src="./assets/icons/headphones.svg" alt="audio book icon">
-                    <div>AudioBooks</div>
+                    <button>
+                        <img src="./assets/icons/headphones.svg" alt="audio book icon" class="icon">
+                        <p class="montserrat">AudioBooks</p>
+                    </button>
                 </div>
             </div>
 
             <div>
-                <img src="./assets/icons/bookmark-outline.svg" alt="bookmark icon">
-                <img src="./assets/icons/book-plus-outline.svg" alt="add book icon">
-                <img src="" alt="">
-                <img src="./assets/icons/dots-vertical.svg" alt="vertical dots icon">
+                <img src="./assets/icons/bookmark-outline.svg" alt="bookmark icon" class="icon">
+                <img src="./assets/icons/book-plus-outline.svg" alt="add book icon" class="icon">
+                <img src="./assets/images/295206124_3276471359297819_8005983615595560632_n.jpg" alt="profile picture" id="profile-picture">
+                <img src="./assets/icons/dots-vertical.svg" alt="vertical dots icon" class="icon">
             </div>
         </div>
 
-        <div id="New-section">
+        <div id="new-section">
             <div>
-                <p></p>
-                <p></p>
+                <p>
+                    New &<br>
+                    Trending
+                </p>
+                <p>Explore new worlds from authors</p>
                 <input type="text" name="search" placeholder="Titles, author, or topics">
             </div>
 
             <div>
-                <img src="./assets/images/54981009.jpg" alt="book cover">
+                <img src="./assets/images/54981009.jpg" alt="book cover" id="hero-image">
             </div>
 
             <div>
                 <div>
-                    <div></div>
-                    <div></div>
+                    <p>Author of the Week</p>
+                    <img src="" alt="image of the author">
                 </div>
                 <div>
-                    <div></div>
-                    <div></div>
+                    <p>Last Listened</p>
+                    <img src="" alt="image of the audio book">
                 </div>
             </div>
         </div>
 
-        <div id="Added-books">
-            
+        <div id="added-books">
+            <p>Recently Added</p>
         </div>
     </div>
 </body>
