@@ -22,7 +22,10 @@
 body {
     height: 100vh;
     background-color: var(--main-color);
+}
+#main-flex-container {
     display: flex;
+    height: 95%;
     justify-content: center;
     align-items: center;
 }
@@ -78,7 +81,7 @@ body {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     border-radius: 30px;
-    gap: 20px;
+    gap: 50px;
 }
 
 /* header */
@@ -169,6 +172,7 @@ body {
     grid-column: 1 / 13;
     display: grid;
     grid-template-columns: auto 1fr;
+    padding-bottom: 40px;
 }
 #added-books>p {
     display: flex;
@@ -181,5 +185,30 @@ body {
 .books {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
+}
+.buttons-div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.mark-read-button {
+    background-color: var(--accent-color);
+    border-color: transparent;
+    border-radius: 10px;
+}
+.delete-button {
+    background-color: var(--accent-color);
+    border-color: transparent;
+    border-radius: 10px;
+}
+
+/* ccredit */
+#credit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 }

@@ -45,9 +45,6 @@ function displayBooks(arr) {
     bookAuthor.classList.add('smaller');
     bookAuthor.innerText = book.author;
     bookInfo.appendChild(bookAuthor);
-    const bookPages = document.createElement('p');
-    bookPages.innerText = book.pages;
-    bookInfo.appendChild(bookPages);
     infoDiv.appendChild(bookInfo);
     const buttonDiv = document.createElement('div');
     buttonDiv.className = 'buttons-div';
