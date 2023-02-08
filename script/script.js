@@ -16,6 +16,12 @@ const library = [
   }
 ];
 
+const bookCovers = [
+  './assets/images/it ends with us.jpg',
+  './assets/images/it.jpg',
+  './assets/images/the house of eve.jpg',
+]
+
 function displayBooks(arr) {
   const bookShelf = document.getElementById('bookshelf');
   for (let i = 0; i < arr.length; i++) {
@@ -25,12 +31,18 @@ function displayBooks(arr) {
     const book = arr[i];
     const bookCover = document.createElement('img');
     bookCover.className = 'book-cover';
+    bookCover.classList.add('image');
+    bookCover.setAttribute('src', bookCovers[Math.floor(Math.random()*bookCovers.length)]);
     infoDiv.appendChild(bookCover);
     const bookInfo = document.createElement('div');
     const bookName = document.createElement('p');
+    bookName.classList.add('libre-caslon');
+    bookName.classList.add('small');
     bookName.innerText = book.name;
     bookInfo.appendChild(bookName);
     const bookAuthor = document.createElement('p');
+    bookAuthor.classList.add('montserrat');
+    bookAuthor.classList.add('smaller');
     bookAuthor.innerText = book.author;
     bookInfo.appendChild(bookAuthor);
     const bookPages = document.createElement('p');
