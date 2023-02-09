@@ -1,28 +1,45 @@
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-use-before-define */
 /* eslint-disable no-unused-vars */
-const library = [
-  {
-    name: 'It',
-    author: 'Stephan King',
-    pages: 300,
-    hasRead: false,
-  },
-  {
-    name: 'Rich Dad Poor Dad',
-    author: 'Robert Kiyo',
-    pages: 350,
-    hasRead: false,
-  }
-];
+const library = [];
 
 const bookCovers = [
   './assets/images/it ends with us.jpg',
   './assets/images/it.jpg',
   './assets/images/the house of eve.jpg',
-]
+];
 
+function Book(name, author, pages, hasRead) {
+  this.name = name;
+  this.author = author;
+  this.pages = pages;
+  this.hasRead = hasRead;
+
+  this.read = () => {
+    this.hasRead = !(this.hasRead);
+  };
+}
+
+addFirstTwoBooks();
 displayBooks(library);
+addDeleteFunctionality();
+addReadFunctionality();
+
+const formButton = document.getElementById('add-book');
+formButton.addEventListener('click', openForm);
+
+const addButton = document.getElementById('add-button');
+addButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  addBookToLibrary();
+  clearDisplay();
+  displayBooks(library);
+  addDeleteFunctionality();
+});
+
+const closeButton = document.getElementById('close-button');
+closeButton.addEventListener('click', closeForm);
 
 function displayBooks(arr) {
   const bookShelf = document.getElementById('bookshelf');
@@ -34,7 +51,7 @@ function displayBooks(arr) {
     const bookCover = document.createElement('img');
     bookCover.className = 'book-cover';
     bookCover.classList.add('image');
-    bookCover.setAttribute('src', bookCovers[Math.floor(Math.random()*bookCovers.length)]);
+    bookCover.setAttribute('src', bookCovers[i]);
     infoDiv.appendChild(bookCover);
     const bookInfo = document.createElement('div');
     const bookName = document.createElement('p');
@@ -53,11 +70,11 @@ function displayBooks(arr) {
     const markReadButton = document.createElement('button');
     markReadButton.id = `mark-read-button${i}`;
     markReadButton.className = 'mark-read-button';
-    markReadButton.classList.add('montserrat')
+    markReadButton.classList.add('montserrat');
     markReadButton.classList.add('smaller');
-    markReadButton.innerText = 'Mark Read';
+    markReadButton.innerText = `${(library[i].hasRead) ? 'Read' : 'Mark Read'}`;
     const deleteButton = document.createElement('button');
-    deleteButton.id = `delete-button${i}`;
+    deleteButton.id = `${i}`;
     deleteButton.className = 'delete-button';
     deleteButton.classList.add('montserrat');
     deleteButton.classList.add('smaller');
@@ -67,31 +84,6 @@ function displayBooks(arr) {
     bookInfo.appendChild(buttonDiv);
     bookShelf.appendChild(infoDiv);
   }
-}
-
-const formButton = document.getElementById('add-book');
-formButton.addEventListener('click', openForm);
-
-const addButton = document.getElementById('add-button');
-addButton.addEventListener('click', (e) => {
-  e.preventDefault();
-  addBookToLibrary();
-  clearDisplay();
-  displayBooks(library);
-});
-
-const closeButton = document.getElementById('close-button');
-closeButton.addEventListener('click', closeForm);
-
-function Book(name, author, pages, hasRead) {
-  this.name = name;
-  this.author = author;
-  this.pages = pages;
-  this.hasRead = hasRead;
-
-  this.Read = () => {
-    this.hasRead = !this.hasRead;
-  };
 }
 
 function addBookToLibrary() {
@@ -124,4 +116,39 @@ function openForm() {
 function closeForm() {
   const form = document.getElementById('addbook-form');
   form.style.display = 'none';
+}
+
+function addDeleteFunctionality() {
+  const deleteButtons = document.querySelectorAll('.delete-button');
+  for (const button of deleteButtons) {
+    button.addEventListener('click', () => {
+      const index = button.id;
+      library.splice(index, 1);
+      clearDisplay();
+      displayBooks(library);
+      addDeleteFunctionality();
+    });
+  }
+}
+
+function addReadFunctionality() {
+  const readButtons = document.querySelectorAll('.mark-read-button');
+  for (const button of readButtons) {
+    button.addEventListener('click', () => {
+      const index = Number(button.id.match(/\d+/g));
+      console.log(index);
+      library[index].read();
+      button.innerText = 'Read';
+      clearDisplay();
+      displayBooks(library);
+      addReadFunctionality();
+    })
+  }
+}
+
+function addFirstTwoBooks() {
+  const book1 = new Book('It', 'Stephan King', 300, false);
+  const book2 = new Book('JavaScript: The Definitive Guide', 'David Flanagan', 700, false);
+  library.push(book1);
+  library.push(book2);
 }
