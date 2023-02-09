@@ -44,7 +44,7 @@
                             Trending
                         </p>
                         <p class="montserrat smaller">Explore new worlds from authors</p>
-                        <input type="text" name="search" placeholder="Titles, author, or topics">
+                        <input type="text" name="search" class="input" placeholder="Titles, author, or topics">
                     </div>
                 </div>
                 <div>
@@ -70,26 +70,31 @@
         All the design concepts belong to<a href="https://dribbble.com/nikitinteam">Bogdan Nikitin</a>
     </p>
     <form action="#" id="addbook-form">
-        <fieldset>
-            <legend>Add Your Book</legend>
-            <div>
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name">
-            </div>
-            <div>
-                <label for="author">Author</label>
-                <input type="text" id="author" name="author">
-            </div>
-            <div>
-                <label for="pages">Pages</label>
-                <input type="text" id="pages" name="pages">
-            </div>
-            <div>
-                <label for="hasRead">Have you read it?</label>
-                <input type="text" id="hasRead" name="hasRead">
-            </div>
-        </fieldset>
-        <button type="submit" id="add-button">Add</button>
+        <div id="fieldset-div">
+            <fieldset>
+                <legend class="libre-caslon">Add Your Book</legend>
+                <div>
+                    <label for="name" class="montserrat small">Name</label>
+                    <input type="text" id="name" name="name" class="input form-input">
+                </div>
+                <div>
+                    <label for="author" class="montserrat small">Author</label>
+                    <input type="text" id="author" name="author" class="input form-input">
+                </div>
+                <div>
+                    <label for="pages" class="montserrat small">Pages</label>
+                    <input type="text" id="pages" name="pages" class="input form-input">
+                </div>
+                <div>
+                    <label for="hasRead" class="montserrat small">Have you read it?</label>
+                    <input type="text" id="hasRead" name="hasRead" class="input form-input" placeholder="true or false">
+                </div>
+            </fieldset>
+        </div>
+        <div>
+            <button type="submit" id="add-button" class="montserrat">Add</button>
+            <button type="button" id="close-button"><img src="./assets/icons/close.svg" alt="close button" class="icon" id="close-icon"></button>
+        </div>
     </form>
 </body>
 </html>

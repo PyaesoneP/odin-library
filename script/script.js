@@ -53,10 +53,14 @@ function displayBooks(arr) {
     const markReadButton = document.createElement('button');
     markReadButton.id = `mark-read-button${i}`;
     markReadButton.className = 'mark-read-button';
+    markReadButton.classList.add('montserrat')
+    markReadButton.classList.add('smaller');
     markReadButton.innerText = 'Mark Read';
     const deleteButton = document.createElement('button');
     deleteButton.id = `delete-button${i}`;
     deleteButton.className = 'delete-button';
+    deleteButton.classList.add('montserrat');
+    deleteButton.classList.add('smaller');
     deleteButton.innerText = 'Delete';
     buttonDiv.appendChild(markReadButton);
     buttonDiv.appendChild(deleteButton);
@@ -65,6 +69,9 @@ function displayBooks(arr) {
   }
 }
 
+const formButton = document.getElementById('add-book');
+formButton.addEventListener('click', openForm);
+
 const addButton = document.getElementById('add-button');
 addButton.addEventListener('click', (e) => {
   e.preventDefault();
@@ -72,6 +79,9 @@ addButton.addEventListener('click', (e) => {
   clearDisplay();
   displayBooks(library);
 });
+
+const closeButton = document.getElementById('close-button');
+closeButton.addEventListener('click', closeForm);
 
 function Book(name, author, pages, hasRead) {
   this.name = name;
@@ -86,6 +96,9 @@ function Book(name, author, pages, hasRead) {
 
 function addBookToLibrary() {
   const book = document.getElementById('addbook-form');
+  if (!(book.elements[1].value) || !(book.elements[2].value)) {
+    return;
+  }
   const name = book.elements[1].value;
   const author = book.elements[2].value;
   const pages = book.elements[3].value;
@@ -101,4 +114,14 @@ function clearDisplay() {
     bookShelf.removeChild(removedChild);
     removedChild = bookShelf.lastChild;
   }
+}
+
+function openForm() {
+  const form = document.getElementById('addbook-form');
+  form.style.display = 'grid';
+}
+
+function closeForm() {
+  const form = document.getElementById('addbook-form');
+  form.style.display = 'none';
 }
