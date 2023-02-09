@@ -22,6 +22,8 @@ const bookCovers = [
   './assets/images/the house of eve.jpg',
 ]
 
+displayBooks(library);
+
 function displayBooks(arr) {
   const bookShelf = document.getElementById('bookshelf');
   for (let i = 0; i < arr.length; i++) {
@@ -63,10 +65,13 @@ function displayBooks(arr) {
   }
 }
 
-displayBooks(library);
-
-const addButton = document.getElementById('add-book');
-addButton.addEventListener('click', addBookToLibrary);
+const addButton = document.getElementById('add-button');
+addButton.addEventListener('click', (e) => {
+  e.preventDefault();
+  addBookToLibrary();
+  clearDisplay();
+  displayBooks(library);
+});
 
 function Book(name, author, pages, hasRead) {
   this.name = name;
@@ -80,12 +85,20 @@ function Book(name, author, pages, hasRead) {
 }
 
 function addBookToLibrary() {
-  const book = document.getElementById('');
-  const name = book.elements[0].value;
-  const author = book.elements[1].value;
-  const pages = book.elements[2].value;
-  const hasRead = book.elements[3].value;
+  const book = document.getElementById('addbook-form');
+  const name = book.elements[1].value;
+  const author = book.elements[2].value;
+  const pages = book.elements[3].value;
+  const hasRead = book.elements[4].value;
   const newBook = new Book(name, author, pages, hasRead);
   library.push(newBook);
 }
 
+function clearDisplay() {
+  const bookShelf = document.getElementById('bookshelf');
+  let removedChild = bookShelf.lastChild;
+  while (removedChild) {
+    bookShelf.removeChild(removedChild);
+    removedChild = bookShelf.lastChild;
+  }
+}
